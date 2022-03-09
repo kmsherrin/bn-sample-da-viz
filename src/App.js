@@ -75,7 +75,7 @@ function App() {
     let dateSortedData = rawData.sort((a, b) => (new Date(a.Date) > new Date(b.Date) ? 1 : -1));
 
     // We can record the start and end times of the dataset
-    setStartTime(dateSortedData[0].Date);
+    setStartTime(new Date(dateSortedData[0].Date).toDateString());
     setEndTime(dateSortedData[dateSortedData.length - 1].Date);
 
     // productList will be used to store the unique products as keys
@@ -259,9 +259,12 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header" style={{ scrollSnapAlign: 'start' }}>
+      <header className="App-header gradient-background" style={{ scrollSnapAlign: 'start' }}>
         <div style={{ textAlign: "center" }}>
-          <h1>Bulk Nutrients Samples</h1>
+          <h1 style={{margin: "1rem"}}>Bulk Nutrients Samples Requested</h1>
+          <h4 style={{margin: "1rem"}}>From {new Date(startTime).toDateString()} to {new Date(endTime).toDateString()} </h4>
+          <h6>A short attempt at providing a visual representation of the samples requested.</h6>
+          <small>- Kendall 👨‍💻</small>
         </div>
       </header>
 
@@ -391,7 +394,11 @@ function App() {
 
               <div className="duplicates border-style">
                 <div>
-                  <h6 style={{ margin: "0.5rem 0" }}>Overall duplicate requests</h6>
+                  <h6 style={{ margin: "0.5rem 0" }}>Total requests</h6>
+                  <h5>{fullData !== undefined ? fullData.length : ""}</h5>
+                </div>
+                <div>
+                  <h6 style={{ margin: "0.5rem 0" }}>Overall duplicates</h6>
                   <h5>{workingData !== undefined && fullData !== undefined ? fullData.length - workingData.length : ""}</h5>
                 </div>
               </div>

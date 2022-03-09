@@ -201,6 +201,9 @@
 
 .duplicates {
   grid-area: duplicates;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 
@@ -256,12 +259,12 @@
 .gradient-background {
   background: -webkit-linear-gradient(
     to right,
-    #c06f2423,
-    #cef0351f
+    #c06f243a,
+    #cef0352d
   ); 
   background: linear-gradient(
     to right,
-    #c06f2423,
-    #cef0351f
+    #c06f243a,
+    #cef0352d
   ); 
 }
