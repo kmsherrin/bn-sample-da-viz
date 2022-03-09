@@ -183,12 +183,10 @@
 /* This grid container is for the product cards */
 .products-grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-auto-rows: 1fr;
   gap: 1rem;
-
   padding: 1rem 0.5rem;
 }
-
 
 .state {
   grid-area: state;
@@ -237,6 +235,12 @@
 
   min-height: 100px;
   padding: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .product-card-container {
+    width: 480px;
+  }
 }
 
 .product-card-image {

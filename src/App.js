@@ -4,6 +4,7 @@ import './App.css';
 
 import BarChartComponent from './components/BarChart';
 import ProductCard from './components/ProductCard';
+import FilterOptions from './components/FilterOptions';
 
 function App() {
 
@@ -250,15 +251,15 @@ function App() {
     <div className="App">
       <header className="App-header gradient-background" style={{ scrollSnapAlign: 'start' }}>
         <div style={{ textAlign: "center" }}>
-          <h1 style={{margin: "1rem"}}>Bulk Nutrients Samples Requested</h1>
-          <h4 style={{margin: "1rem"}}>From {new Date(startTime).toDateString()} to {new Date(endTime).toDateString()} </h4>
+          <h1 style={{ margin: "2rem" }}>Bulk Nutrients Samples Requested</h1>
+          <h4 style={{ margin: "2rem" }}>From {new Date(startTime).toDateString()} to {new Date(endTime).toDateString()} </h4>
           <h6>A short attempt at providing a visual representation of the samples requested.</h6>
           <small>- Kendall 👨‍💻</small>
         </div>
       </header>
 
       <section name="data-ui" className="App-header">
-        <h2 style={{ margin: "1rem" }}>Requested Samples</h2>
+        <h2 style={{ margin: "2rem" }}>Requested Samples</h2>
         <div className="container" name="grid-container">
 
           <aside className="left">
@@ -271,14 +272,12 @@ function App() {
                 <div name="product-filter-checkboxes" style={{ textAlign: "left" }}>
                   {
                     productListing !== undefined ? (
-                      Object.keys(productListing).sort().map((row, index) => {
-                        return (
-                          <div style={{ margin: "0.5rem", display: "flex" }} key={index} data-testid="product-filter">
-                            <input id={`product-checkbox-${row}`} type="checkbox" value={row} onChange={(e) => handleProductCheckboxFilter(e)} />
-                            <label className="filter-label" htmlFor={`product-checkbox-${row}`}>{row}</label>
-                          </div>
-                        )
-                      })
+                      <FilterOptions
+                        inputArray={Object.keys(productListing)}
+                        checkboxHandler={handleProductCheckboxFilter}
+                        testid={'product-filter'}
+                      >
+                      </FilterOptions>
                     ) : (
                       <h6 data-testid="product-filter-none-found">No products found</h6>
                     )
@@ -288,19 +287,15 @@ function App() {
 
               <div className="filters-container">
                 <h5> State </h5>
-                <div name="state-filter-checkboxes" style={{ textAlign: "left" }}>
+                <div name="state-filter-checkboxes" style={{ textAlign: "left"}}>
                   {
                     states.length > 0 ? (
-                      states.sort().map((row, index) => {
-                        if (row !== undefined) {
-                          return (
-                            <div style={{ margin: "0.5rem", display: "flex" }} key={index} data-testid="state-filter">
-                              <input id={`product-checkbox-${row}`} type="checkbox" value={row} onChange={(e) => handleStateCheckboxFilter(e)} />
-                              <label className="filter-label" htmlFor={`product-checkbox-${row}`}>{row}</label>
-                            </div>
-                          )
-                        }
-                      })
+                      <FilterOptions
+                        inputArray={states.sort()}
+                        checkboxHandler={handleStateCheckboxFilter}
+                        testid={'state-filter'}
+                      >
+                      </FilterOptions>
                     ) : (
                       <h6 data-testid="state-filter-none-found">No states found</h6>
                     )
