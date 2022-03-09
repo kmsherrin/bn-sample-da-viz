@@ -11,6 +11,14 @@ npm install
 
 The command will install all the necessary packages, it make take a short time.
 
+### Please note:
+Before starting, set a system environment variable REACT_APP_BN_API_URL to the address of the sample data.
+On windows this looks like set REACT_APP_BN_API_URL=https://website.address
+On Unix this looks like export REACT_APP_BN_API_URL=https://website.address
+
+If that fails, please go to line 55 in App.js and set the url to the sample data address.
+
+
 To start the development server (because it is a web app), run from the same terminal as before:
 `
 npm start
@@ -18,6 +26,12 @@ npm start
 
 The server should then start up and automatically direct your browser to the page. If not, check the terminal where it is running and it will tell you the address to navigate to. Most likely, this is [http://localhost:3000](http://localhost:3000)
 
+
+If you want some tests were written tp mildly verify some things are working. Run these with:
+`
+npm test
+`
+All tests should pass if everything is setup correctly
 
 ---
 

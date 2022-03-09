@@ -54,9 +54,9 @@ const BarChartComponent = (props) => {
                         </BarChart>
                     </ResponsiveContainer>
                 ) : (
-                    <h5>
+                    <h6>
                         🍞 Chart still loading ...
-                    </h5>
+                    </h6>
                 )
             }
         </div>
