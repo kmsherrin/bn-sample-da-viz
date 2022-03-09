@@ -13,7 +13,9 @@ The command will install all the necessary packages, it make take a short time.
 
 ### Please note:
 Before starting, set a system environment variable REACT_APP_BN_API_URL to the address of the sample data. This can be done in a terminal or command line.
+
 On Windows this looks like: set REACT_APP_BN_API_URL=https://website.address
+
 On Unix this looks like: export REACT_APP_BN_API_URL=https://website.address
 
 If the above fails and you cannot get the variable to be set, the URL can be hard-coded, go to line 55 in App.js and set the URL to the sample data address.
