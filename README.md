@@ -1,3 +1,26 @@
+# Kendalls notes:
+I quickly bootstrapped this project with CRA (create react app, see below). This wasn't entirely necessary,
+especially given the complexity of the project, but I did it anyways...
+
+To run this app (just in dev mode), make sure you have NodeJS and npm installed, [download here](https://nodejs.org/en/download/).
+
+Open the project root directory in your terminal, i.e. the folder which has the package.json, App.js etc. You will then need to run:
+`
+npm install
+`
+
+The command will install all the necessary packages, it make take a short time.
+
+To start the development server (because it is a web app), run from the same terminal as before:
+`
+npm start
+`
+
+The server should then start up and automatically direct your browser to the page. If not, check the terminal where it is running and it will tell you the address to navigate to. Most likely, this is [http://localhost:3000](http://localhost:3000)
+
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
