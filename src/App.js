@@ -8,7 +8,7 @@ import FilterOptions from './components/FilterOptions';
 
 import { motion, AnimatePresence } from "framer-motion";
 
-function App() {
+function App(props) {
 
   const dow = { 0: 'Sunday', 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday' };
 
@@ -39,22 +39,29 @@ function App() {
 
   useEffect(() => {
     // Initial startup - fetch the required data
-    const rawDataFetch = async () => {
 
-      /* 
-      If you are having problems, please replace the process.env.bn_api_path with the actual URL
-      i.e. https://secure.website.com.au/content/data.json (obviously replace with the right one)
+    // This is sneaky to avoid additional tooling
+    if (props.testData !== undefined) {
+      setRawData(props.testData);
+    } else {
+      const rawDataFetch = async () => {
 
-      To use this you will need to set a system/user environment variable
-      i.e. export export REACT_APP_BN_API_PATH=https://secure.website.com.au/content/data.json
-      or set REACT_APP_BN_API_PATH=https://secure.website.com.au/content/data.json
-      */
-      let url = process.env.REACT_APP_BN_API_URL;
-      let response = await fetch(url);
-      let data = await response.json();
-      setRawData(data);
+        /* 
+        If you are having problems, please replace the process.env.bn_api_path with the actual URL
+        i.e. https://secure.website.com.au/content/data.json (obviously replace with the right one)
+  
+        To use this you will need to set a system/user environment variable
+        i.e. export export REACT_APP_BN_API_PATH=https://secure.website.com.au/content/data.json
+        or set REACT_APP_BN_API_PATH=https://secure.website.com.au/content/data.json
+        */
+        let url = process.env.REACT_APP_BN_API_URL;
+        let response = await fetch(url);
+        let data = await response.json();
+        setRawData(data);
+      }
+      rawDataFetch();
     }
-    rawDataFetch();
+
   }, [])
 
   /* 
@@ -332,7 +339,7 @@ function App() {
                 </div>
                 {/* This is the products scroll display*/}
                 <motion.div layout className="products-grid-container" style={{ maxHeight: '800px', overflowY: "auto" }}>
-                  <AnimatePresence>
+                  {/* <AnimatePresence> */}
                     {
                       shownProductCountsArray.length > 0 ? (
                         shownProductCountsArray.slice(0, endIndex).map((row, index) => {
@@ -348,7 +355,7 @@ function App() {
                         })
                       ) : (<h5 style={{ margin: "1rem" }} data-testid="no-results"> No results found for those filters</h5>)
                     }
-                  </AnimatePresence>
+                  {/* </AnimatePresence> */}
                 </motion.div>
 
                 <div>
