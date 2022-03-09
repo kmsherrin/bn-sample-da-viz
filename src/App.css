@@ -81,10 +81,8 @@
 
 /* Main page container for mobile */
 .container {
-  width: 100%;
-
+  max-width: 99vw;
   display: grid;
-  gap: 2rem;
   grid-template-rows: 1fr;
   grid-auto-columns: 1fr;
   grid-auto-rows: 1fr;
@@ -96,6 +94,7 @@
 /* Change the container layout for desktop */
 @media (min-width: 500px) {
   .container {
+    gap: 2rem;
     grid-template-columns: 0.5fr 1fr 0.2fr;
     grid-template-areas: "left middle right";
   }
@@ -104,12 +103,16 @@
 /* Add styling to properly place the left side (filters box) for both mobile and desktop */
 .left {
   grid-area: left;
+  display: block;
 }
 .left-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 @media (min-width: 500px) {
   .left {
@@ -119,6 +122,7 @@
   }
   .left-container {
     margin-left: auto;
+    margin-right: 1rem;
   }
 }
 .filters-container {
@@ -127,11 +131,9 @@
   align-items: left;
   justify-content: center;
   margin: 0.5rem;
-  width: 100%;
 }
 @media (min-width: 500px) {
   .filters-container {
-    margin-left: auto;
     max-width: 30rem;
   }
 }
@@ -151,9 +153,9 @@
 
 .data-container {
   display: grid;
+  gap: 1rem 0;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
-  gap: 2rem;
   grid-template-areas:
     "popular"
     "state"
@@ -163,7 +165,7 @@
 
 @media (min-width: 500px) {
   .data-container {
-    display: grid;
+    gap: 2rem;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 0.2fr;
     grid-auto-columns: 1fr 1fr;
@@ -173,6 +175,8 @@
       "popular state"
       "popular dayofweek"
       "popular duplicates";
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -182,7 +186,7 @@
 /* This grid container is for the product cards */
 .products-grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 1rem;
 
   padding: 1rem 0.5rem;

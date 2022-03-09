@@ -257,8 +257,8 @@ function App() {
         </div>
       </header>
 
-      <section name="data-ui" className="App-header" style={{ padding: "0.2rem 0.5rem" }}>
-        <h2 style={{ margin: "1rem" }}>Requested</h2>
+      <section name="data-ui" className="App-header">
+        <h2 style={{ margin: "1rem" }}>Requested Samples</h2>
         <div className="container" name="grid-container">
 
           <aside className="left">
