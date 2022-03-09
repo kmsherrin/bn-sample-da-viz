@@ -6,6 +6,8 @@ import BarChartComponent from './components/BarChart';
 import ProductCard from './components/ProductCard';
 import FilterOptions from './components/FilterOptions';
 
+import { motion, AnimatePresence } from "framer-motion";
+
 function App() {
 
   const dow = { 0: 'Sunday', 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday' };
@@ -287,7 +289,7 @@ function App() {
 
               <div className="filters-container">
                 <h5> State </h5>
-                <div name="state-filter-checkboxes" style={{ textAlign: "left"}}>
+                <div name="state-filter-checkboxes" style={{ textAlign: "left" }}>
                   {
                     states.length > 0 ? (
                       <FilterOptions
@@ -329,23 +331,25 @@ function App() {
                   </select>
                 </div>
                 {/* This is the products scroll display*/}
-                <div className="products-grid-container" style={{ maxHeight: '800px', overflowY: "auto" }}>
-                  {
-                    shownProductCountsArray.length > 0 ? (
-                      shownProductCountsArray.slice(0, endIndex).map((row, index) => {
-                        return (
-                          <ProductCard
-                            product={row.product}
-                            flavour={row.flavour}
-                            count={row.count}
-                            key={index}
-                          >
-                          </ProductCard>
-                        )
-                      })
-                    ) : (<h5 style={{ margin: "1rem" }} data-testid="no-results"> No results found for those filters</h5>)
-                  }
-                </div>
+                <motion.div layout className="products-grid-container" style={{ maxHeight: '800px', overflowY: "auto" }}>
+                  <AnimatePresence>
+                    {
+                      shownProductCountsArray.length > 0 ? (
+                        shownProductCountsArray.slice(0, endIndex).map((row, index) => {
+                          return (
+                            <ProductCard
+                              product={row.product}
+                              flavour={row.flavour}
+                              count={row.count}
+                              key={index}
+                            >
+                            </ProductCard>
+                          )
+                        })
+                      ) : (<h5 style={{ margin: "1rem" }} data-testid="no-results"> No results found for those filters</h5>)
+                    }
+                  </AnimatePresence>
+                </motion.div>
 
                 <div>
                   {

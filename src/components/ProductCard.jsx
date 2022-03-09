@@ -1,7 +1,17 @@
+import { motion } from "framer-motion";
+
 const ProductCard = (props) => {
 
     return (
-        <div className="product-grid-item" data-testid="product-card" style={{ height: 'fit-content', backgroundColor: '#282c35', border: "2px solid #576072", borderRadius: '0.5rem', boxShadow: "2px 2px 7px #1d2026" }}>
+        <motion.div 
+            layout 
+            animate={{ opacity: 1, scale: 1 }} 
+            initial={{opacity: 0, scale: 0}} 
+            exit={{opacity: 0, scale: 0}}
+            className="product-grid-item border-style" 
+            data-testid="product-card" 
+            style={{ height: 'fit-content', backgroundColor: '#282c35'}}>
+
             <div className="product-card-container">
                 <div className="product-card-image">
                     <img style={{ margin: "auto" }} src={"https://picsum.photos/100"} alt={props.product} />
@@ -20,7 +30,7 @@ const ProductCard = (props) => {
                     </h6>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
