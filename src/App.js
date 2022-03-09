@@ -15,11 +15,8 @@ function App() {
   const [workingData, setWorkingData] = useState(undefined);
   const [filteredWorkingData, setFilteredWorkingData] = useState(undefined);
 
-  const [productCounts, setProductCounts] = useState([]);
-  const [productCountsArray, setProductCountsArray] = useState([]);
   const [shownProductCountsArray, setShownProductCountsArray] = useState([]);
 
-  const [stateCounts, setStateCounts] = useState([]);
   const [stateChartData, setStateChartData] = useState(undefined);
   const [dayOfWeekChartData, setDayOfWeekChartData] = useState(undefined);
 
@@ -30,15 +27,12 @@ function App() {
   const [startTime, setStartTime] = useState(null);
   const [endTime, setEndTime] = useState(null);
 
-  const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(6);
 
   const [productFilters, setProductFilters] = useState([]);
   const [stateFilters, setStateFilters] = useState([]);
 
   const [sortMethod, setSortMethod] = useState('most')
-
-  const [productFiltersHide, setProductFiltersHide] = useState(false);
 
   useEffect(() => {
     // Initial startup - fetch the required data
@@ -163,8 +157,6 @@ function App() {
         stateCounts[row.postcodeState] = stateCounts[row.postcodeState] ? stateCounts[row.postcodeState] + 1 : 1;
         postcodeCounts[row.Postcode] = postcodeCounts[row.Postcode] ? postcodeCounts[row.Postcode] + 1 : 1;
       }
-      // Holds onto overall counts of products by state
-      setStateCounts(stateCounts);
 
       /* 
       Lets structure this into an array where each element is an object
@@ -182,12 +174,9 @@ function App() {
           rowData: workingData.filter(row => row.Sample === key)
         })
       })
-      // Product counts is the obj with keys corresponding to products
-      setProductCounts(productCounts);
 
       // Sort this according to the current method
       let productCountsArraySorted = sortProducts(productCountsArray, sortMethod);
-      setProductCountsArray(productCountsArraySorted);
 
       // Shown is used so that we can cut back on the number of product cards shown
       setShownProductCountsArray(productCountsArraySorted);
@@ -348,7 +337,7 @@ function App() {
                 <div className="products-grid-container" style={{ maxHeight: '800px', overflowY: "auto" }}>
                   {
                     shownProductCountsArray.length > 0 ? (
-                      shownProductCountsArray.slice(startIndex, endIndex).map((row, index) => {
+                      shownProductCountsArray.slice(0, endIndex).map((row, index) => {
                         return (
                           <ProductCard
                             product={row.product}
