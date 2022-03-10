@@ -221,8 +221,9 @@ function App(props) {
   }, [filteredWorkingData])
 
   const applyFilters = () => {
-    // Get the original working data
-    let data = workingData;
+    /* Get the original working data, make a new object and not 
+      just a reference to ensure useEffect is triggered */
+    let data = Object.create(workingData);
 
     if (productFilters.length > 0) {
       data = data.filter(row => productFilters.includes(row.product));
